@@ -7,8 +7,7 @@
 \providecommand{\BIBentrySTDinterwordspacing}{\spaceskip=0pt\relax}
 \providecommand{\BIBentryALTinterwordstretchfactor}{4}
 \providecommand{\BIBentryALTinterwordspacing}{\spaceskip=\fontdimen2\font plus
-\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
-  \fontdimen4\font\relax}
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus \fontdimen4\font\relax}
 \providecommand{\BIBforeignlanguage}[2]{{%
 \expandafter\ifx\csname l@#1\endcsname\relax
 \typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
@@ -22,48 +21,42 @@
 \BIBdecl
 
 \bibitem{qmlTypeList}
-\glqq Liste aller QML Types,
-  \url{https://doc.qt.io/qt-6/qtquick-qmlmodule.html}, Accessed:[15.06.2023].
+\glqq Liste aller QML Types,  \url{https://doc.qt.io/qt-6/qtquick-qmlmodule.html}, Accessed:[15.06.2023].
 
 \bibitem{Hübler2019}
-S.~Hübler, \glqq BPS Tätigkeits- und Erfahrungsbericht: Objekterkennung und
-  Verfolgung mittels Kamera in Produktionsanlagen am Beispiel der Modellfabrik
-  µPlant,  2019.
+S.~Hübler, \glqq BPS Tätigkeits- und Erfahrungsbericht: Objekterkennung und Verfolgung mittels Kamera in Produktionsanlagen am Beispiel der Modellfabrik µPlant,  2019.
 
 \bibitem{ModbusOrg}
-\glqq Modbus Organization,  \url{http://www.modbus.org}, Accessed:
-  [12.06.2023].
+\glqq Modbus Organization,  \url{http://www.modbus.org}, Accessed: [12.06.2023].
 
 \bibitem{LarsKistner2017}
-L.~Kistner, \glqq Konzeptionierung und Umsetzung einer serviceorientierten
-  verteilten Automatisierungs-Architektur für die heterogene Modellfabrik
-  µPlant,  2017.
+L.~Kistner, \glqq Konzeptionierung und Umsetzung einer serviceorientierten verteilten Automatisierungs-Architektur für die heterogene Modellfabrik µPlant,  2017.
 
 \bibitem{QtWikiHistory}
-\glqq Qt History on Qt Wiki,  \url{https://wiki.qt.io/Qt_History}, Accessed:
-  [13.06.2023].
+\glqq Qt History on Qt Wiki,  \url{https://wiki.qt.io/Qt_History}, Accessed: [13.06.2023].
 
 \bibitem{pysideQtWidgets}
-\glqq PySide6 QtWidgets,
-  \url{https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/index.html}, Accessed:
-  [14.06.2023].
+\glqq PySide6 QtWidgets,  \url{https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/index.html}, Accessed: [14.06.2023].
 
 \bibitem{pysideQtQuick}
-\glqq PySide6 QtQuick,
-  \url{https://doc.qt.io/qtforpython-6/PySide6/QtQuick/index.html}, Accessed:
-  [14.06.2023].
+\glqq PySide6 QtQuick,  \url{https://doc.qt.io/qtforpython-6/PySide6/QtQuick/index.html}, Accessed: [14.06.2023].
 
 \bibitem{pysideSignalSlot}
-\glqq Signal and Slot in PySide6 Framework,
-  \url{https://doc.qt.io/qtforpython-6/PySide6/QtCore/Slot.html}, Accessed:
-  [13.06.2023].
+\glqq Signal and Slot in PySide6 Framework,  \url{https://doc.qt.io/qtforpython-6/PySide6/QtCore/Slot.html}, Accessed: [13.06.2023].
 
 \bibitem{pepDocstrings}
-\glqq PEP 257 – Docstring Conventions,
-  \url{https://peps.python.org/pep-0257/}, Accessed: [19.06.2023].
+\glqq PEP 257 – Docstring Conventions,  \url{https://peps.python.org/pep-0257/}, Accessed: [19.06.2023].
 
 \bibitem{RTD}
-\glqq Read The Docs Homepage,  \url{https://readthedocs.org/}, Accessed:
-  [19.06.2023].
+\glqq Read The Docs Homepage,  \url{https://readthedocs.org/}, Accessed: [19.06.2023].
+
+\bibitem{sphinxRST}
+\glqq Restructured Text Syntax,  \url{https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html}, Accessed: [19.06.2023].
+
+\bibitem{pytestHP}
+\glqq Pytest Framework,  \url{https://docs.pytest.org/en/7.3.x/}, Accessed: [19.06.2023].
+
+\bibitem{unittestHP}
+\glqq Python 3 Unittest - Unit testing framework,  \url{https://docs.python.org/3/library/unittest.html}, Accessed: [19.06.2023].
 
 \end{thebibliography}

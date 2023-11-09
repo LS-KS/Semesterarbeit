@@ -1,14 +1,12 @@
-
-
-\chapter{Softwarearchitektur der bestehender Programme}\label{Kap2}
+\chapter{Softwarearchitekturanalyse bestehender Programme}\label{Kap2}
 
     Analysemethoden der Informatik für Software sind in der Regel für die verschiedenen Design-Phasen entwickelt worden.
-    Eine von mir durchgeführte Recherche ergab, dass sich Analyse-Tools und Methoden für bestehende Software vor
+    Eine von mir durchgeführte Internet-Recherche ergab, dass sich Analyse-Tools und Methoden für bestehende Software vor
     allem darauf fokussieren, die Performance, Speichermanagement und Benutzererfahrung zu bewerten.
     Die Architektur einer Software spielt dabei eine untergeordnete Rolle.
-    Für die Neuentwicklung der bestehenden Software wird allerdings im Folgenden die Programmstruktur dargestellt und analysiert.
+    Für einen Nachfolger der Lagerverwaltung 3.0 soll jedoch zunächst ihre Softwarearchitektur untersucht werden.
     Die Performance und der Speicherverbrauch spielen für die $\mu$Plant eine untergeordnete Rolle.
-    Eine Bewertung der Programmkomponenten sollte also anhand folgender Kriterien bewertet werden:
+    Eine Bewertung der Programmkomponenten sollt also anhand folgender Kriterien bewertet werden:
 
     \begin{itemize}
         \item Ihrem Nutzen für den Anwender
@@ -22,31 +20,41 @@
         \item Zuverlässig und robust, und
         \item gut erweiterbar sein.
     \end{itemize}
-    In einem C$\#$ Projekt sind UI und Logik in getrennten Dateien implementiert.
-    XAML Dateien sind eine angepasste Form von XML Dateien und legen somit fest, wie das GUI gerendert wird.
-    XAML.CS Dateien enthalten die dahinterliegende Logik und Schnittstellen zu anderen Programmteilen.
+    In einem C$\#$ Projekt sind GUI und Buisinesslogik in getrennten Dateien implementiert.
+    XAML-Dateien gehören zu Microsofts .NET Plattform. 
+    Ihr Dateiformat ähnelt denen von XML-Dateien. 
+    Sie legen fest wie das GUI gerendert wird und werden im integrierten Editor der Visual Studio IDE bearbeitet.
+    .XAML.cs Dateien implementieren die Controller-Logik des XAML-Inhalts. 
+    Ihre Programmiersprache ist C$\#$.
+
     Am Beispiel des Startbildschirms des Programms \glqq Lagerverwaltung 3.0\grqq wird der Programmaufbau geschildert.
-    Im Weiteren Verlauf dieser Arbeit wird, wegen der Komplexität und des fehlenden Mehrwerts, darauf verzichtet.
-    Aus gleichem Grund wird auf die detaillierte Beschreibung der Funktionsweise von grafischen ELementen ihrer Events
+    Aufgrund der Komplexität und des fehlenden Mehrwerts wird weiteren Verlauf dieser Arbeit darauf verzichtet.
+    Aus dem gleichem Grund wird auf die detaillierte Beschreibung der Funktionsweise von grafischen ELementen ihrer Events
     sowie ihrer Eventhandler verzichtet.
-    \\
+
     In den erstellen Klassendiagrammen ist gut ersichtlich, welche Klassen Events nutzen.
-    Sie erben von der Klasse \verb|INotifyPropertyChanged|, welche die benötigten Listeners dafür bereitstellt.
+    Sie erben von der Klasse \verb|INotifyPropertyChanged|.
+    Die Klasse ist ein Interface der .NET Plattform und wird immer dann eingesetzt, wenn eine GUI-Komponente über eine Änderung
+    informiert werden soll. Sie wird im Allgemeinen dafür benutzt um das GUI mit dem hinterlegten Datenmodell zu verknüpfen.
+
+    Wenn diese Klasse implementiert wird, muss die Methode \verb|OnPropertyChanged| überschrieben werden, die immer dann aufgerufen wird,
+    wenn sich ein Wert ändert. 
+    \clearpage
 
     \section {Lagerverwaltung 3.0}
 
-    Wie in dem einleitenden Abschnitt angekündigt wird zunächst der grundlegende Aufbau des Programms beschrieben.
-    \\
+    Wie in dem einleitenden Abschnitt angekündigt wird zunächst der grundlegende Aufbau des Programms beschrieben.\\
+
     Die Datei \verb|App.xaml| ist der Einstiegspunkt des Programms.
     In ihr wird ein Objekt der Application-Klasse mit allen benötigten Ressourcen erzeugt.
-    Als Start URL ist \verb|MainWindow.xaml| angeben.
-    \\
+    Als Start URL ist \verb|MainWindow.xaml| angeben.\\
     In der Datei ist beschrieben, wie der Startbildschirm gerendert wird.
+
     Zunächst wird ein Banner gerendert, bestehend aus dem Titel des Programms, dem Logo des Instituts und der $\mu$Plant
     (Siehe Abb.\ref{fig:figure} Bereich \glqq A\grqq).
     Es werden außerdem alle benötigten Datenobjekte erzeugt.
     Sie lassen sich wie folgt einteilen:
-    \\
+    
     \begin{itemize}
         \item Objekte und Variablen, die dem Lager zugeordnet sind:
             \begin{itemize}
@@ -64,24 +72,34 @@
                 \item Ein Objekt \verb|controllerSim| von der Klasse \verb|RobotSimulator|.
             \end{itemize}
     \end{itemize}
+
     Im Constructor der Klasse \verb|MainWindow| werden zudem der ModBus und der Roboter Controller initialisiert
-    und gerendert (Abb.\ref{fig:figure} Bereiche \glqq B\grqq und \glqq C\grqq).
+    und ihre GUI-Elemente gerendert (Abb.\ref{fig:figure} Bereiche \glqq B\grqq{} und \glqq C\grqq).
+    
     Die Produktliste wird aus der Datei \verb|Produkte.db| geladen und gerendert (Abb.\ref{fig:figure} Bereich \glqq D\grqq).
+    
     Daten des Lagers und des mobilen Roboters sowie die Kommissionsdaten werden aus der Datei \verb|CommissionData.db|
-    geladen und anschließend das Inventar gerendert (Abb.\ref{fig:figure} Bereich \glqq E \grqq und \glqq G \grqq).
-    \\
-    Im Bereich \glqq F\grqq werden alle Ereignisse der Software als text angezeigt.
+    geladen und anschließend das Inventar gerendert (Abb.\ref{fig:figure} Bereich \glqq E\grqq{}  und \glqq G\grqq).
+    
+    Bereich \glqq F\grqq{} ist der Eventlog der Anwendung, dort werden alle Ereignisse der Software als Text angezeigt.
     Das können Fehler sein aber auch Fortschritte im Programmablauf.
-    \\
+
     Im mittleren Bereich ist die Anordnung von Roboter, Andockstation und Kommissioniertisch symbolisiert.
     Der \glqq Start\grqq -Knopf startet den Automatikbetrieb.
+    Nach dem Start der Automatik kann der selbe Knopf zum Stoppen des Automatikbetriebs verwendet werden.
+
     Wenn keine Verbindung zum Modbus hergestellt werden kann, wird dem Benutzer angeboten die Vorgänge zu simulieren.
-    m Klassendiagramm Abb.\ref{fig:figure2} wird jedoch schnell deutlich, dass dieser Simulationsbetrieb nicht dazu genutzt werden
-    kann, um etwaige Fehler zu erkennen, da dazu eine ganz andere Klasse verwendet wird.
-    Im Bereich \glqq Mobile Robot\grqq wird nach erfolgreichem Andocken das erkannte Produkt angezeigt.
-    Dem Bediener wird hier angeboten die Daten manuell zu manipulieren oder Details auszublenden.
-    Im Bereich \glqq Workbench\grqq werden bis zu zwei Paletten mit ihrem Inhalt gerendert.
+    Im Klassendiagramm Abb.\ref{fig:figure2} wird jedoch schnell deutlich, dass dieser Simulationsbetrieb nicht für einen Testbetrieb
+    geeignet ist, da dazu eine ganz andere Klasse verwendet wird.
+
+    Im Bereich \glqq Mobile Robot\grqq{} wird nach erfolgreichem Andocken das erkannte Produkt angezeigt.
+    Dem Bediener wird hier angeboten die Daten manuell zu manipulieren oder Details ein- bzw. auszublenden.
+
+    Im Bereich \glqq Workbench\grqq{} werden bis zu zwei Paletten mit ihrem Inhalt gerendert.
     Auch hier wird dem Benutzer angeboten, die Daten per Hand zu manipulieren.
+
+    Im Folgenden werden die wichtigsten Klassenstrukturen beschrieben.
+    Auf die Beschreibungen von Hilfsklassen und solche, die für die .NET Plattform oder die Programmiersprache C$\#$ spezifisch sind, wird verzichtet.
 
     \begin{figure}[h]
         \caption[Ansicht des Startbildschirms]
@@ -94,52 +112,50 @@
     \subsection{Klassenstruktur des Datenmodells}\label{Datenmodell}
 
     Die bestehende Software dient dazu Lagerpakete vom mobilen Roboter auf die Werkbank oder ins Lager zu bewegen.
-    Oder alle möglichen Kombinationen davon.
-    Das Konzept der $\mu$Plant beschränkt sich dabei auf eine Palette, die so ausgeführt ist, dass der Greifer des
-    Industrieroboters sie sicher bewegen kann.
-    Im Wesentlichen ist es ein Quader mit zwei seitlichen Längsnuten.
-    Eine Palette enthält zwei senkrechte Bohrungen, die es ermöglichen je einen Becher aufzunehmen.
-    Ein Becher ist ein transparentes, zylindrisches Gefäß aus Acrylglas mit einem Absatz, der etwa mittig in der
-    Höhe angebracht ist, sodass der Greifer die Becher einzeln bewegen kann.
-    Es wird also immer entweder
+    Oder alle möglichen Kombinationen davon. 
+    Ein Lagerpaket ist einer der nachfolgenden Varianten:
     \begin{itemize}
-        \item Eine Palette
         \item Ein Becher
-        \item eine Palette mit einem oder mehreren Bechern
+        \item Eine leere Palette
+        \item eine Palette mit einem oder zwei Bechern
     \end{itemize}
-    bewegt.
+    
     Der Programmierer hat sich diese Struktur angeeignet und in der Datenmodellierung umgesetzt.
     In Abb.\ref{fig:figure2} ist gut ersichtlich, dass die Klasse \verb|StorageElementBase| an die Klassen \verb|Cup| und \verb|Pallet|
     vererbt (schmale Linie mit leerem Pfeil, in Anlehnung an UML). Eigenschaften, die sowohl Palette als auch den
     Becher betreffen, sind in dieser Klasse implementiert.
+
     Weiterhin findet sich das Lager als eigene Klasse \verb|Inventory| und der mobile Roboter als \verb|MobileRobot| wieder.
     Die \verb|Inventory|-Klasse ist jedoch nicht das Lager im Sinne von Abb.\ref{fig:figure2} Bereich \glqq G\grqq, sondern auf die Liste in
-    Bereich \glqq E\grqq.
-    \\
+    Bereich \glqq E\grqq.\\
+
     \begin{figure}
         \caption[Klassendiagramm Datenmodells ]
         {\small Klassendiagramm der MainWindow-Klasse mit vererbenden- und Datenmodell - Klassen }\label{fig:figure2}
         \includegraphics[width = \textwidth ]{Bilder/LV_Klassendiagramm_Datenmodell}
         \centering
     \end{figure}
-    \newpage
+    \clearpage
+
     Zentrales Element ist die \verb|MainWindow| Klasse.
     Sie implementiert eigentlich die Interface-Klasse \verb|System.Windows.Window|.
-    Der Programmierer hat sie allerdings als Daten-Hub verwendet.
-    Wie oben geschildert werden beim Rendern des Fensters alle benötigten Datenobjekte erzeugt oder aus Dateien geladen.
+    Der Programmierer hat sie allerdings auch als Daten-Hub verwendet.
+    
+    Wie zu Beginn des Abschnitts geschildert werden beim Rendern des Fensters alle benötigten Datenobjekte erzeugt oder aus Dateien geladen.
+
     \begin{itemize}
         \item In der Klasse \verb|Inventory| wird der Inhalt der Datei \verb|Produkte.db| in zwei Listen geladen, sodass
         eine Liste mit lagernden Produkten und eine vollständige Produktliste gespeichert werden.
         Eine Instanz \verb|inventory| wird zur Laufzeit erzeugt. Wenn die Dateien \verb|Produkte.db| und
         \verb|StorageData.db| zu dem Zeitpunkt nicht verfügbar ist, stürzt das Programm ab.
-        \item In der Klasse \verb|PalletMatrix| wird die Datei \verb|StorageData.db| bzw. \verb|CommissionData.db|
+        \item In der Klasse \verb|PalletMatrix| wird die Datei \verb|StorageData.db| bzw. \\ \verb|CommissionData.db|
         geladen um einen zweidimensionalen Array \verb|data| zu erzeugen.
         Jedes Array-Element ist ein Objekt der Klasse \verb|Pallet| und enthält eine Liste \verb|CupList| von Objekten
         der Klasse \verb|Cup|.
         Diese Struktur wird dazu verwendet, um das reale Lager zu visualisieren.
         Zur Laufzeit werden zwei Objekte der Klasse \verb|PalletMatrix| erzeugt:
         \begin{itemize}
-            \item \verb|storageMatrix| bildet das Datenmodell um die Visualisierung in Abb.\ref{fig:figure2} Bereich \grqq G \glqq zu realisieren.
+            \item \verb|storageMatrix| bildet das Datenmodell um die Visualisierung in Abb.\ref{fig:figure2} Bereich \grqq G\glqq{} zu realisieren.
             \item \verb|commissionMatrix| bildet das DatenModell für die Visualisierung des mobilen Roboters und der
             Workbench.
         \end{itemize}
@@ -153,16 +169,39 @@
     \end{figure}
 
 \subsection{Klassenstruktur zur Steuerung des ABB Industrieoboter IRB 140}\label{ABBKlassen}
-Um dem Industrieroboter ABB IRB 140 Befehle zu erteilen, muss das Programm mit der Steuerung IRC5 kommunizieren.
+
+Um dem Industrieroboter ABB IRB 140 Kommandos zu senden, muss das Programm mit der Steuerung IRC5 kommunizieren.
+Die Steuerung ist Baujahr 1991 und hat eine Firmware \glqq RobotWare 5.15.1004.01\grqq{} installiert.
+Die Kommunikation erfolgt über ein verschlüsseltes TCP/IP Protokoll. 
+
 Im Programmcode finden sich dazu wie in Abb.\ref{fig:figure3} gezeigt, die Klassen der Bibliothek \verb|ABBRobotics|.
-Instanzen dieser Bibliothekbestandteile werden in der Klasse \verb|RobotController| erzeugt, die von der Klasse
+Instanzen dieser Bibliothekbestandteile werden in der Klasse\\ \verb|RobotController| erzeugt, die von der Klasse
 RobotControllerBase erbt.
-Interessanter Weise wird in der \verb|MainWindow| Klasse kein Objekt von RobotController erzeugt, sondern von der Klasse
+
+Interessant ist, dass in der \verb|MainWindow| Klasse kein Objekt von RobotController erzeugt wird, sondern eiens von der Klasse
+\verb|RobotControllerBase| \glqq controllerBase\grqq{}, welches mit \verb|null| initialisiert wird. 
+Diese Klasse hat Properties für die Näherungssensoren der Andockstation und virtuelle Funktionen um den Status abzurufen, 
+den mobilen Roboter als abfahrbereit zu melden und Kommandos auszuführen. 
+
+In der Methode \verb|StartProcess_click| - also mit Klick auf den Start Button - wird das Objekt verändert mit der Zuweisung
+
+$$controllerBase = robotControl.controlHandler;$$
+
+Die Zuweisung löst die Anmeldung des PC's mit der Steuerung aus und gibt als Rückgabewert ein Objekt der Klasse \verb|RobotController| zurück. 
+
+\subsubsection{Klassen und Methoden der Kommandos}
+
+Die Klasse \verb|ControllerCommandList| erbt von einer Liste der Klasse\\ 
+\verb|ControllerCommand|.  Beide Klassen gehören zum namespace der 
 \verb|RobotControllerBase|.
-Die Klasse \verb|ControllerCommandList| erbt von einer Liste der Klasse \verb|ControllerCommand|.
-Beim Initialisieren des Programms wird eine leere \verb|ControllerCommandlist| erzeugt.
+
+Beim Initialisieren des Programms wird eine leere \verb|ControllerCommandlist| erzeugt. 
+Die Klasse \verb|ControllerCommand| hat Properties, die bspw. den Status, ein Kommando-Datenstring und eine Beschreibung des Kommandos enthalten. 
+Sie implementiert demnach das Datenmodell der Kommandos. 
+
 Die Methoden und Variablen in der Klasse implizieren, dass die Commands aus einer Datei geladen werden.
-Diese Methoden werden jedoch nie genutzt.
+Sie lassen sich aber sowohl in der IDE Visual Studio als auch in der IDE Rider keine Verweise zu den Methoden finden.
+
 Die Klasse ControllerCommand hat 5 statische Methoden.
 Jede von ihnen gibt ein Objekt der Klasse \verb|ControllerCommand| zurück.
 \begin{itemize}
@@ -180,33 +219,34 @@ Jede von ihnen gibt ein Objekt der Klasse \verb|ControllerCommand| zurück.
 \end{itemize}
 Als Parameter in der Methodensignatur werden die Koordinaten der Start- und Endpunkte übergeben
 sowie \verb|Pallet| Objekte am Start- und Endpunkt.
-In dem ControllerCommand Objekt werden zwei Strings erzeugt, die am Beispiel \verb|StorageToWorkBench| erklärt werden:
+
+In dem ControllerCommand Objekt werden zwei Strings erzeugt, die am Beispiel\\
+\verb|StorageToWorkBench| erklärt werden:
 \newline
-\newline
-\verb|command = string.Format("Palette_{0}_{1}_1_{2}",|\\
-\verb|station, position, w_col +1)|
-\newline
-\newline
+\lstinputlisting[language = Python, caption = Formatierung eines Kommandos an den IRB140 Roboterarm, label=command ]{Listings/commandFormat.cs}
+
 \verb|station| ist ein Integer mit dem Wert von 3, wenn die oberste Regalreihe ausgewählt wurde, oder 2 sonst.
+
 \verb|position| ist ein Integer, der sich aus der Spalte des Lagerregals errechnet.
+
 \verb|w_col+1| ist die Angabe des Ortes am Kommissioniertischs.
-\newline
-\newline
-\verb|Description = string.Format("[{0}.{1}] {2}({3}) -> {4}({5})",cupID, prodID, |\\
-\verb|str_title_Storage, PositionName, str_title_Commissioning,PositionName)|
-\newline
-\newline
-Damit wird ein String erzeugt, der eine Beschreibung des Vorgangs enthält.
+
+
+\lstinputlisting[language = Python, caption = Erzeugung eines beschreibenden Strings für den Eventlog, label=commandDsc ]{Listings/commandDescription.cs}
+
+
+Mit \ref{commandDsc} wird ein String erzeugt, der eine Beschreibung des Vorgangs enthält.\\
 Die \verb|ControllerCommands| werden in Methoden der \verb|MainWindow| Klasse erzeugt.
 Die Parameter der Funktionssignatur stammen aus dem Objekt \verb|commissionMatrix| welche in Kapitel \ref{Datenmodell}
 bereits beschrieben wurde.
+
 Die \verb|MainWindow| Klasse hat eine Timer-gesteuerte Funktion \verb|MainTimerFunction|, die die Commands
 fallweise abarbeitet.
-Wie genau die Daten vom Modbus Server in die \verb|commissionMatrix| geschrieben werden ließ sich mit meinen eher
-bescheidenen C$\#$ Kenntnissen nicht evaluieren.
+Wie genau die Daten vom Modbus Server in die \verb|commissionMatrix| geschrieben werden konnte ich mit meinen eher
+bescheidenen C$\#$ Kenntnissen nicht ermitteln.
 \newpage
 
-\subsubsection{Klassenstruktur Modbus TCP/IP}\label{ModbusChapter}
+\subsection{Klassenstruktur Modbus TCP/IP}\label{ModbusChapter}
 
 Modbus ist ein open-source Kommunikationsprotokoll welches 1979 von Modicon (heute Schneider Electric) veröffentlicht wurde.
 Es wird dazu verwendet Client-Server Verbindungen einzurichten und ist laut Modbus Organization de facto Standard in
@@ -227,18 +267,21 @@ Adressen und/oder Funktionsregister schreibt.
 Diese Adressen sind in der Datei \verb|ModbusBaseAddress.cs| niedergeschrieben und und um die Adressen des mobilen Roboters
 ergänzt.
 \input{Kapitel/Tabellen/ModbusBaseAddress}
+\clearpage
 Schaut man sich das Klassendiagramm der Modbus - Implementierung \ref{fig:figure4} an, stellt man fest, dass es die Klasse
-\verb|MainWindow| Objekte von drei verschiedenen Klassen instanziert, die sich dem Modbus Protokoll zuordnen lassen.
-Sie besitzt ein Objekt der Klasse \verb|ModbusStatus| welches ein Objekt der Klasse \verb|ModBusCommunication| besitzt.
+\verb|MainWindow| Objekte von drei verschiedenen Klassen instanziiert, die sich dem Modbus Protokoll zuordnen lassen.
+
+Sie besitzt ein Objekt der Klasse \verb|ModbusStatus| welches ein Objekt der Klasse \\\verb|ModBusCommunication| besitzt.
+
 \verb|modbusTCP.modbusTCPServer| wird ebenfalls als Objekt in \verb|MainWindow| erzeugt.
-Gleichzeitig wird sie aber auch in \verb|ModbusCommunication| instanziert.
+Gleichzeitig wird sie aber auch in \verb|ModbusCommunication| instanziiert.
+
 Die dritte Klasse ist \verb|ModbusProperties|.
---> Methoden analysieren und Übergang zu ABB Klassen schaffen.
+Sie ist eine Datenklasse und enthält die IP-Adresse und den Port des Modbus Servers.
 
 \verb|CommissionMatrix|
 Die Klasse RobotController übersetzt diese in Strings und schickt sie an die IRC5 Steuerung.
-Wenn diese den Befehl ausgeführt hat, meldet sie \glqq Fertig \grqq zurück.
-Das muss anhand von Code gezeigt werden.
+Wenn diese den Befehl ausgeführt hat, meldet sie \glqq Fertig\grqq{} zurück.
 
 Im Anhang B.5 seiner Arbeit sind die Modbus-Adressen, die dem Lager zugeordnet sind, aufgelistet.
 Der Adressenbereich ist lückenlos zwischen 1024 und 1105.
@@ -255,106 +298,132 @@ Das schließt den Kommissioniertisch und den mobilen Roboter mit ein.
 
 \subsection{GUI}
 Das GUI besteht aus einem Fenster, welches in 8 Bereiche unterteilt ist (siehe Abb.\ref{fig:figure}).
-Der Bereich\glqq A \grqq hat keine Bedienfunktion.
+Der Bereich \glqq A\grqq{} hat keine Bedienfunktion.
 
-Der Bereich \glqq B \grqq ermöglicht dem Benutzer die Verbindungsdaten zur Steuerung des ABB Roboter IRB140 zu
-konfigurieren und die Verbindung herzustellen. Die Verbindungsdaten sind voreingestellt und die Felder sind
-standardmäßig für die Eingabe deaktiviert. Die Felder können über die Taste \glqq Modify \grqq wird die Eingabe
-freigeschaltet.
-Mit der Taste \glqq Save \grqq können die Änderungen gespeichert werden.
-Mit der \glqq "Start" \grqq Taste wird die Verbindung hergestellt.
-Die Taste verändert daraufhin ihren Text zu \glqq Connecting...\grqq und bei erfolgreich hergestellter Verbindung
-zu \glqq Stop \grqq.
+\subsubsection{ABB Controller Einstellungen}
+
+Der Bereich \glqq B\grqq{} ermöglicht dem Benutzer die Verbindungsdaten zur Steuerung des ABB Roboter IRB140 zu
+konfigurieren und die Verbindung herzustellen. 
+Die Verbindungsdaten sind voreingestellt und die Felder sind standardmäßig für die Eingabe deaktiviert. 
+Die Aktivierung des Felds erfolgt über die Taste \glqq Modify\grqq{}.
+Mit der Taste \glqq Save\grqq{} können Änderungen gespeichert werden.
+
+Mit der \glqq Start\grqq{} Taste wird die Verbindung hergestellt.
+Die Taste verändert daraufhin ihren Text zu \glqq Connecting...\grqq{} und bei erfolgreich hergestellter Verbindung
+zu \glqq Stop\grqq{}.
 Ein Symbolbild Informiert dabei über den Verbindungsstatus.
 
-Im Bereich \glqq C \grqq kann der Ip Port des Modbus Servers über die Taste \glqq Modify \grqq angepasst werden.
-Nach meiner Beobachtung funktioniert der Bereich nicht wie er soll, denn die Verbindung wird direkt nach Programmstart
-direkt als hergestellt angezeigt.
-Die Verbindungstaste zum Starten steht zum Programmstart auf \glqq Stop\grqq.
+\subsubsection{Modbus Einstellungen}
+Im Bereich \glqq C\grqq{} kann der IP-Port des Modbus-Servers über die Taste \glqq Modify\grqq{} angepasst werden.
+Direkt nach Programmstart, noch vor der Betätigung der Start-Taste, ist das Symbolbild für den Verbindungsstatus grün
+und suggeriert eine erfolgreiche Verbindungsherstellung. 
+Nach meinem Verständnis handelt es sich hierbei um eine Fehl-Initialisierung.
 
-Im Bereich \glqq D \grqq befindet sich eine scrollbare Liste aller möglicher Produkte mit zwei Spalten.
-Es wird neben dem Produktnamen die Produkt ID angezeigt.
-Wahrscheinlich wurde die Liste als Nachschlagewerk gebaut, denn es sind ansonsten keine Bedienfunktionen verfügbar.
+Die Verbindungstaste zum Starten der des Automatikbetrieb steht zum Programmstart auf \glqq Stop\grqq{}.
 
-Im Bereich \glqq E \grqq Ist die Gleiche Liste um eine Spalte erweitert, in der die gelagerte Menge aufgeführt ist.
-Die Liste bildet somit eine gute Übersicht über das Inventar und ist daher auch als \glqq Inventory \grqq gekennzeichnet.
-Mit der Checkbox \glqq Show empty entries \grqq können die Produkte ohne eingelagerte Menge ausgeblendet werden.
+\subsubsection{Produktliste}
+Im Bereich \glqq D\grqq{} befindet sich eine scrollbare Liste aller möglichen Produkte mit zwei Spalten.
+Es wird neben dem Produktnamen die Produkt-ID angezeigt.
+Vermutlich dient die Liste als Nachschlagewerk oder Übersicht, denn es sind ansonsten keine Bedienfunktionen verfügbar.
 
-Bereich \glqq F \grqq ist ein Eventlog. Hier werden von dem Programm aus verschiedenste MItteilungen an den Beutzer getätigt.
-Mit der Taste \glqq clear \grqq werden alle existierenden Einträge gelöscht.
+\subsubsection{Inventaranzeige}
+Im Bereich \glqq E\grqq{} Ist die Gleiche Liste um eine Spalte erweitert, in der die gelagerte Menge aufgeführt ist.
+Die Liste bildet somit eine bessere Übersicht über das gelagerte Inventar und ist auch als \glqq Inventory\grqq{} gekennzeichnet.
+Mit der Checkbox \glqq Show empty entries\grqq{} können Produkte ohne eingelagerte Menge ausgeblendet werden.
 
-Bereich \glqq G \grqq ist die Visualisierung des Lagers.
-Die drei Reihen \glqq TOP\grqq, \glqq MIDDLE\grqq und \glqq BOTTOM\grqq sollen die drei Regalböden des Lagerregals nachbilden.
+\subsubsection{Eventloganzeige}
+Bereich \glqq F\grqq{} ist ein Eventlog. Hier werden von dem Programm aus verschiedenste Mitteilungen dem Benutzer angezeigt.
+Mit der Taste \glqq clear\grqq{} werden alle existierenden Einträge gelöscht.
+
+\subsubsection{Lagervisualisierung}
+Bereich \glqq G\grqq{} ist die Visualisierung des Lagers.
+Die drei Reihen \glqq TOP\grqq{}, \glqq MIDDLE\grqq{} und \glqq BOTTOM\grqq{} sollen die drei Regalböden des Lagerregals nachbilden.
 Sie sind als hellgraues Rechteck gerendert.
+
 Die Slots A1\ldots A6, H1\ldots H6 sowie H7\ldots H12 sind die Plätze für je eine Palette, die wiederum Platz für
 je zwei Becher hat.
 Der Ursprung dieser Bezeichnung konnte während der Vorbereitungen auf diese Arbeit nicht geklärt werden.
-Das reale Pendant ist mit L1\ldots L18 gekennzeichnet.\\
-Das dunkelgraue Rechteck mit der Lagerort Beschriftung symbolisiert die Palette.
-Die beiden weißen Rechtecke darauf symbolisieren je einen Becher.
-Sie sind mit \glqq a \grqq für vorne und \glqq b \grqq für hinten gekennzeichnet und zeigen den Produktnamen an.
-Ist ein Slot für einen Becher leer, wird kein entsprechendes Rechteck gerendert.
-Ein leerer Becher ist ein Produkt im Sinne des Programms.
-Ist keine Palette vorhanden, verbleibt der gesamte Bereich der Palette leer.
-In der oberen rechten Ecke kann der Benutzer mit der Checkbox \glqq Show Details \grqq zusätzlich die Cup ID und die
-Produkt ID ein- und ausblenden.
-Mit der Checkbox \glqq Edit \grqq kann der Benutzer alle Daten (Palette vorhanden/ nicht vorhanden, Cup ID, Produkt ID)
-als Eingabefeld sehen und ändern.
-Der Produktname wird dabei über die Produkt ID referenziert.
-Die Änderungen werden gespeichert, indem die Checkbox einfach wieder abgewählt wird.\\
+Wie ich in \ref{Lagerzelle} beschriebe habe, weicht diese Art der Bezeichnung der Lagerplätze von der realen lagerzelle ab.
 
-Im Mittleren Bereich ist links der Bereich für den mobilen Roboter gerendert.
-Rechts ist der Bereich des Kommissioniertischs gerendert.
-Beide Bereiche geben dem Benutzer, wie das Lager auch, die Möglichkeit über die Checkboxen \glqq Show Details \grqq
-und \glqq Edit\grqq Die Cup- bzw. Produkt ID ein- und auszublenden oder die Daten manuell zu überschreiben.
-Darüber ist der Roboter IRB 140 als symbolbild gerendert.
+Das dunkelgraue Rechteck mit der Beschriftung des Lagerorts symbolisiert die Palette.
+Die beiden weißen Rechtecke darauf symbolisieren je einen Becher.
+Sie sind mit \glqq a\grqq{} für vorne und \glqq b\grqq{} für hinten gekennzeichnet und zeigen den Produktnamen an.
+
+Ist ein Slot für einen Becher leer, wird das entsprechende Rechteck nicht gerendert.
+Ein leerer Becher ist ein Produkt im Sinne des Programms.
+
+Ist keine Palette vorhanden, verbleibt der gesamte Bereich der Palette leer.
+
+In der oberen, rechten Ecke kann der Benutzer mit der Checkbox \glqq Show Details\grqq{} zusätzlich die Becher-ID und die
+Produkt-ID ein- und ausblenden.
+
+Mit der Checkbox \glqq Edit\grqq{} kann der Benutzer alle Daten (Palette vorhanden/ nicht vorhanden, Becher-ID, Produkt-ID)
+als Eingabefeld sehen und ändern.
+Der Produktname wird dabei über die Produkt-ID referenziert.
+Die Änderungen werden gespeichert, indem die Checkbox einfach wieder abgewählt wird.
+
+\subsubsection{Prozessvisualisierung}
+
+Der Bereich der Prozessvisualisierung ist in der Mitte des Bildschirms.
+
+Im Automatikbetrieb ist dieser grob in 4 Bereiche eingeteilt. 
+
+\textbf{Oben Rechts} ist ein Symbolbild des Industrieroboters IRB 140 dargestellt. 
 Das Bild bietet keinerlei Bedienfunktion.
-Links daneben befindet sich die \glqq Start \grqq Taste.
-Sie startet bei verbundenem Modbus den Automatikbetrieb.
+
+\textbf{Oben links} befindet sich die Start-Taste und im Simulationsbetrieb weitere GUI-Elemente.
+Wenn die Verbindungen zum Modbus und zur IRC5-Steuerung hergestellt sind, kann mit ihr der Automatikbetrieb gestartet werden.
 Ist der Modbus nicht verbunden, erscheint nach dem Klick ein Dialogfenster.
-Dieses fragt den Benutzer ob wegen der fehlenden Verbindung der Controller simuliert werden soll.
-Klickt man nun auf \glqq Ja \grqq wird über dem mobilen Roboter ein weiteres Rechteck gerendert.
-Es enthält zwei Checkboxen \glqq Mobile Robot is present \grqq und \glqq Robot has non transparent cup \grqq.
-Erstere rendert nach dem Klick einen mobilen Roboter (schwarzes Oval) und gibt dem Benutzer die Möglichkeit
-wie gewohnt über die beiden Checkboxen im oberen, rechten Bereich, Daten eines Bechers und Produkts einzugeben.
-Klickt man nun wieder auf die Taste, die nun mit \glqq Stop \grqq beschriftet ist, erscheint für etwa eine Sekunde
-der Schriftzug \glqq Wait\ldots \grqq bevor das Programm wieder in den Ausgangszustand wechselt.\\
+Der Benutzer wird gefragt, ob aufgrund der fehlenden Verbindung der Controller simuliert werden soll.
+Klickt man nun auf \glqq Ja\grqq{}, wird über dem mobilen Roboter ein weiteres Rechteck gerendert.
+Es enthält zwei Checkboxen \glqq Mobile Robot is present\grqq{} und \glqq Robot has non-transparent cup\grqq{}.
+Erstere rendert nach dem Klick einen mobilen Roboter (schwarzes Oval) und gibt dem Benutzer die Möglichkeit,
+wie gewohnt über die beiden Checkboxen im oberen rechten Bereich, Daten eines Bechers und Produkts einzugeben.
+Klickt man nun wieder auf die Taste, die nun mit \glqq Stop\grqq{} beschriftet ist, erscheint für etwa eine Sekunde
+der Schriftzug \glqq Wait...\grqq{}, bevor das Programm wieder in den Ausgangszustand wechselt.
+
+\textbf{Unten links} befindet sich die Visualisierung des mobilen Roboters. 
+
+\textbf{Unten rechts} befindet sich die Visualisierung des Kommissioniertischs.
+
+Beide Lagerbereiche, für den mobilen Roboter und den Kommissioniertisch,  
+geben dem Benutzer die Möglichkeit die Becher- bzw. Produkt-ID ein- und auszublenden oder zu überschreiben.
 
 Weiterhin bietet das Programm keine Möglichkeit den Roboter zu steuern.
 
-\newpage
+\clearpage
 \section {Controller}
 
-Der Controller ist ein kleines Programm, welches die manuelle Bedienung der Lagerzelle ermöglicht.
-Wie in \ref{fig:figure5} ersichtlich, ist das Fenster einfach strukturiert und übersichtlich.
-Ganz oben können die Modbus Verbindungsdaten konfiguriert werden und ganz unten ist ein Eventlog, derüber alle Fehler und
-Fortschritte in Textform berichtet.
-Dazwischen sind über eine Registeransicht die Basisfunktionen, wie sie in den statischen Methoden aus Kapitel
-\ref{ABBKlassen} schon beschrieben wurden.
-In dem Reiter kann ein Befehl konfiguriert werden und mit \glqq Send\grqq wird der Befehl
-über die implementierten Modbus-Klassen an die Steuerung IRC5 des Industrieroboters IRB 140 gesendet.\\
+Der Controller ist eine kleine Anwendung, die die manuelle Bedienung der Lagerzelle ermöglicht.
+Die Implementierung der RFID - Funktionen können anhand des Klassendiagramms nicht gezeigt werden.
+In Vorbereitung auf diese Arbeit habe ich nicht ausprobiert, ob das Programm diese Funktionen so erfüllt wie sie in dem
+GUI impliziert wird.
+Für die weitere Arbeit würde dies auch keinen Mehrwert bieten, wie sich in Kapitel \ref{PythonApp}
+noch zeigen wird.
 
-Mit dem RFID Server Tool, darunter dargestellt, können Speicherblöcke eines RFID-Tags mit der Cup ID oder mit der Produkt ID
-beschrieben werden.
-Voraussetzung dafür ist, dass der Becher in der Andockstation des mobilen Roboters steht.
+\subsection{Klassenstruktur des Controllers}
+
+Der Controller ist genau wie die Lagerverwaltung 3.0 in C$\#$ zusammen mit der .NET-Plattform implementiert.
+Da der Controller keinen eigenen Modbus-Server hostet sondern die Klasse \verb|ModbusClient| nutzt, kann er ohne die 
+Anwendung \glqq Lagerverwaltung 3.0\grqq{} nicht benutzt werden.
 
 In Abb.\ref{fig:figure6} sieht man, dass das Programm aus zwei wesentlichen Klassen neben dem \verb|MainWindow| besteht.
 \verb|ModbusClient| implementiert den Modbus Clienten zur Kommunikation mit den Modbus Servern, die in \ref{ModbusChapter}
-beschrieben sind. Die Klasse implementiert auch das in \cite{LarsKistner2016} beschriebene Agentensystem.
+beschrieben sind. Die Klasse implementiert auch das in \cite{LarsKistner2017} beschriebene Agentensystem.
 \verb|ModbusInfo| dagegen hält die Daten, die zur Erzeugung der Kommandos benötigt werden.
 
-Die Implementierung der RFID - Funktionen können anhand des Klassendiagramms nicht gezeigt werden.
-In Vorbereitung auf diese Arbeit habe ich nicht ausprobiert, ob das Programm diese Funktionen so erfüllt wie sie in dem
-GUI impliziert wird. Für die weitere Arbeit würde dies auch keinen Mehrwert bieten wie sich in Kapitel \ref{PythonApp}
-noch zeigen wird.
+Mit dem Konstruktor der Klasse \verb|MainWindow| werden die Klassen \verb|ModbusClient| und \verb|ModbusInfo| instanziiert.
 
 \begin{figure}
-    \caption[Klassendiagramm des Controllers ]
-    {\small Klassendiagramm des Warehouse-Controllers mit allen vererbenden Klassen jedoch ohne Klassen die
+    \caption[Klassendiagramm des Controllers]
+    {\small Klassendiagramm des Controllers mit allen vererbenden Klassen, jedoch ohne Klassen die
     lediglich Datentypen konvertieren.}\label{fig:figure6}
-    \includegraphics[width = 0.8\textwidth ]{Bilder/C_Klassendiagramm}
+    \includegraphics[width = \textwidth ]{Bilder/C_Klassendiagramm}
     \centering
 \end{figure}
+
+
+\subsection{GUI}
 
 \begin{figure}
     \caption[Ansicht des Controller- Startbildschirm ]
@@ -363,48 +432,80 @@ noch zeigen wird.
     \centering
 \end{figure}
 
-\newpage
+Wie in \ref{fig:figure5} ersichtlich, ist das Fenster einfach strukturiert und übersichtlich.
+Es ist in vier Bereiche unterteilt, die durch eine grau umrandete Box und eine Überschrift abgegrenzt sind.
+
+\subsubsection{Modbus Einstellungen}
+
+Dieser Bereich ist ganz oben und durch die Überschrift \glqq Modbus Configuration\grqq{} gekennzeichnet.
+In zwei Textfeldern können Modbus-IP und -Port eingegeben werden. 
+
+Rechts daneben befinden sich untereinander zum Einen ein Label, dass den Verbindungsstatus anzeigt und zum Anderen
+ein Knopf mit dem die Verbindung hergestellt und beendet werden kann.
+
+Nach dem Programmstart ist die Beschriftung der Taste \glqq Start\grqq{}.
+
+Mit Klick auf die Taste wird die Verbindung hergestellt und das Label darüber wechselt zu \glqq Connecting...\grqq{}.
+Ist die Verbindung erfolgreich hergestellt, wechselt das Label auf \glqq Connected\grqq{} und die Taste wird mit
+\glqq Stop\grqq{} beschriftet.
+
+\subsubsection{Kommando erzeugen}
+
+Direkt unter dem Modbus Einstellungsbereich befindet sich der Bereich \glqq Order\grqq{}.
+Der Bereich ist durch ein Reitermenü ausgefüllt, dessen Reiter die Überschriften
+\glqq Basic\grqq{}, \glqq Pallet\grqq{} und \glqq Cup\grqq{} tragen.
+
+Im Reiter \glqq Basic\grqq{} befinden sich sieben Auswahlfelder und eine Taste.
+
+Mit dem Feld \glqq Operation\grqq{} kann über ein Drop-Down Menü ausgewählt werden, ob ein Becher oder Produkt vom Roboter ins Lager transportiert werden soll oder umgekehrt.
+
+Mit dem Feld \glqq Request Type\grqq{} kann über ein Drop-Down Menü ausgewählt werden, ob der Transport nur Vorbereitet (\glqq Prepare\grqq{}) oder auch ausgeführt (\glqq Execute\grqq{}) werden soll.
+
+Darunter befinden sich Eingabefelder über die die relevante ID (Becher oder Produkt) eingegeben werden kann.
+
+Optional kann darunter über ein Drop-Down Menü die Lagerposition des Lagers oder Bechers ausgewählt werden.
+
+
+Mit der Taste \glqq Send\grqq{} wird das Kommando an die Steuerung gesendet.
+
+Im Reiter \glqq Pallet\grqq{} kann analog der Transport einer Palette angefordert werden.
+
+Im Reiter \glqq Cup\grqq{} kann analog der Transport eines Bechers angefordert werden.
+
+\subsubsection{RFID Server Tool}
+
+Mit dem RFID Server Tool, dargestellt unter dem Reitermenü, können Speicherblöcke eines RFID-Tags mit der Becher-ID und/oder Produkt-ID
+beschrieben werden.
+Voraussetzung dafür ist, dass der mobile Roboter mit Becher in der Andockstation des steht.
+
+Die IDs werden in einem Eingabefeld als Zahl eingegeben. Optional kann die Bechergröße ausgewählt werden. 
+
+Mit der Taste \glqq Send\grqq{} werden die Daten auf das RFID-Tag geschrieben.
+
+\subsubsection{Eventlog}
+
+Dies ist ein Textbereich in dem die angeforderten Kommandos aufgelistet werden und eine Mitteilung wenn sie erfolgreich ausgeführt wurden.
+
+
+\clearpage
 \section {RFID Server}
 
-Dieses kleine Programm implementiert einen Modbus TCP/IP Server wie in \ref{ModbusChapter} beschrieben.
-Statt mit dem ABB Controller zu kommunizieren, hält dieser Server Daten, die aus einem RFID-Tag stammen.
-In jeder Fertigungszelle der $\mu$Plant gibt es einen RFID Leser der Fa. Feig.
-Stationen in der $\mu$Plant können einen Tag am Becher beschreiben wenn sie das Produkt im Becher manipulieren.
+Dieses kleine Programm implementiert einen Modbus TCP/IP Client wie in \ref{ModbusChapter} beschrieben.
+Dieser wird genutzt um die gelesenen RFID-Tags für alle Stationen der $\mu$Plant verfügbar zu machen.
+
+In jeder Station der $\mu$Plant gibt es einen RFID Leser der Fa. Feig.
+
+Stationen in der $\mu$Plant können einen Tag am Becher beschreiben wenn sie das Produkt im Becher manipulieren oder die Tags auslesen.
 Anschließend können Stationen die einen Becher erhalten, den angekündigten Becher und das Produkt beim Eintreffen
 in der Station verifizieren.
-Die Verfahren dazu sind in \cite{LarsKistner2016} gut beschrieben.
-Die Daten der Tags sollen beim Schreiben und Lesen auf die Modbus Adresse des RFID Servers der jeweiligen Station
-geschrieben werden.
-Die Auftragswervaltung der $\mu$Plant kann die Daten der Tags dann von den RFID Servern abrufen.
-Wie das funktioniert, konnte ich in Vorbereitung auf diese Arbeit nicht untersuchen.
+Die Verfahren dazu sind in \cite{LarsKistner2017} gut beschrieben.
 
-Das GUI des RFID-Servers ist einfach gehalten und ist in Abb.\ref{fig:figure7} dargestellt.
-Das Hauptelement ist eine Liste.
-Jedes Listenelement enthält Daten zu einem RFID Modbus Server und einem Tag mit seinen Daten.
-Mit der Taste \glqq Add New \grqq können neue, leere, Listenelemente erzeugt werden.
-Standardmäßig sind die Eingabefelder deaktiviert, können jedoch mit der Taste \glqq Modify\grqq zum Bearbeiten
-freigeschaltet werden.
-Mit der Taste \glqq Start\grqq wird die Verbindung hergestellt. Ein Feedback, ob die Verbindung erfolgreich hergestellt
-werden konnte ist zunächst nicht erischtlich.
-Jedes Listenelement enthält eine Checkbox mit der es ausgewählt werden kann.
-Mit den Tasten \glqq Select All \grqq und \glqq Select None \grqq können alle Listenelemente an- oder abgewählt werden.
-Im unteren, rechten Bereich können mit den Tasten \glqq Start Selected \grqq und \glqq Stop Selected\grqq mehrere Server
-gleichzeitig gestartet und gestoppt werden.
-Mit der Taste \glqq Remove Selected \grqq können alle ausgewählten Listenelemente gelöscht werden.
-Sicherheitsabfrage?!?
+Die Daten der Tags sollen beim Schreiben und Lesen auf die Modbus Adressen des Modbus Servers geschrieben werden.
 
-Die Programmstruktur kann anhand des Klassendiagramms in \ref{fig:figure8} gut erklärt werden.
-Eine Klasse \verb|MainWindow| hält eine Instanz der Klasse \verb|RFIDProducerCollection|.
-Diese implementiert die oben beschriebene Liste welche Objekte der Klasse \verb|RFIDProducer| speichert.
-Ein \verb|RFIDProducer| Objekt enthält ein Objekt der Klasse \verb|ModbusClient| für die Kommunikation über TCP/IP und
-ein Objekt der Klasse \verb|TagReader| für die RFID Kommunikation.
+Die Auftragswervaltung der $\mu$Plant kann die Daten der Tags dann vom Modbus Server abrufen.
+Die RFID-Lesegeräte werden über TCP/IP mittels des SDK der Fa. Feig angesprochen.
 
-\begin{figure}
-    \caption[Startbildschirm des Programms RFID-Server]
-    {\small Startbildschirm des Programms RFID-Server}\label{fig:figure7}
-    \includegraphics[height = \textwidth ]{Bilder/RFIDServer_Bildschirm}
-    \centering
-\end{figure}
+\subsection{Klassenstruktur des RFID Servers}
 
 \begin{figure}
     \caption[Klassendiagramm des Programms RFID Server ]
@@ -413,6 +514,45 @@ ein Objekt der Klasse \verb|TagReader| für die RFID Kommunikation.
     \includegraphics[width = \textwidth ]{Bilder/RFID_Klassendiagramm}
     \centering
 \end{figure}
+
+Die Programmstruktur ist anhand des Klassendiagramms in \ref{fig:figure8} erklärt.
+Eine Klasse \verb|MainWindow| hält eine Instanz der Klasse \verb|RFIDProducerCollection|.
+
+Diese implementiert die oben beschriebene Liste welche Objekte der Klasse \verb|RFIDProducer| speichert.
+
+Ein \verb|RFIDProducer| Objekt enthält ein Objekt der Klasse \verb|ModbusClient| für die Kommunikation über TCP/IP und
+ein Objekt der Klasse \verb|TagReader| für die RFID Kommunikation.
+
+
+\subsection{GUI}
+Das GUI des RFID-Servers ist einfach gehalten und ist in Abb.\ref{fig:figure7} dargestellt.
+Das Hauptelement ist eine Liste.
+Jedes Listenelement enthält Daten zu einem RFID Modbus Server und einem Tag mit seinen Daten.
+Mit der Taste \glqq Add New\grqq{} können neue, leere, Listenelemente erzeugt werden.
+
+Standardmäßig sind die Eingabefelder deaktiviert, können jedoch mit der Taste \glqq Modify\grqq{} zum Bearbeiten
+freigeschaltet werden.
+
+Mit der Taste \glqq Start\grqq{} wird die Verbindung hergestellt. Ein Feedback, ob die Verbindung erfolgreich hergestellt
+werden konnte ist zunächst nicht ersichtlich.
+
+Jedes Listenelement enthält eine Checkbox mit der es ausgewählt werden kann.
+
+Mit den Tasten \glqq Select All\grqq{} und \glqq Select None\grqq{} können alle Listenelemente an- oder abgewählt werden.
+
+Im unteren, rechten Bereich können mit den Tasten \glqq Start Selected\grqq{} und \glqq Stop Selected\grqq{} mehrere Server
+gleichzeitig gestartet und gestoppt werden.
+
+Mit der Taste \glqq Remove Selected\grqq{} können alle ausgewählten Listenelemente gelöscht werden.
+
+\begin{figure}
+    \caption[Startbildschirm des Programms RFID-Server]
+    {\small Startbildschirm des Programms RFID-Server}\label{fig:figure7}
+    \includegraphics[height = \textwidth ]{Bilder/RFIDServer_Bildschirm}
+    \centering
+\end{figure}
+
+
 
 \newpage
 \section{Funktionsanalyse}\label{funktionsanalyse}
