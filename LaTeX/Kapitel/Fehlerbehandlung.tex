@@ -1,29 +1,50 @@
 \chapter{Analyse zur Fehlerbehandlung}\label{Fehlerbehandlung}
 
+Fehler können systematischer oder sporadischer Natur sein.
+Die effektive Fehlersuche und Fehlerbehebung ist ein wichtiger Bestandteil der Softwareentwicklung, der den Entwickler 
+ständig begleitet. 
+
 \subsection{Fehleridentifikation}
 
-Fehler können systematischer oder sporadischer Natur sein.
-Systematische Fehler können in der Softwareentwicklung durch intensives Testen behoben werden.
+Syntaxfehler und Fehler in der Benutzung der Programmiersprache Python lassen sich in der Regel gut finden und beheben.
+Der größte Teil wird bereits bei der Erstellung des Quellcodes erkannt und farblich markiert. 
+Andere Fehler führen bei jedem Ausführen des Codes zu einem Ausnahmefehler, den der Interpreter erkennt und (meistens) eine brauchbare
+Fehlermeldung in der Konsole ausgibt. 
+
+Weitere Fehler sind oft in der Logik des Programms zu finden. Diese zu identifizieren ist in der Regel schwieriger.
+Es ist jedoch möglich, nach dem Eingabe-Verarbeitung-Ausgabe Prinzip vorzugehen. 
+Dabei bewertet man engmaschig die Eingabe und die Ausgabe und vergleicht Soll mit Ist. 
+
+Eingaben können in einem Wertebereich möglich sein.
+Hier muss der Entwickler alle erwartbaren Sonderfälle abdecken.
+Für systematische Fehler können in der Softwareentwicklung Tests definiert werden, die das Programmverhalten 
+für ein Spektrum an Eingaben überprüfen.
+Die Ausgaben werden mit den erwarteten Ausgaben durch Assertions verglichen.
 In Python ist dies beispielsweise mit dem Paket \verb|pytest| ( siehe \cite{pytestHP}) oder \verb|unittest| ( siehe \cite{unittestHP}) möglich.
-Anhand einer kurzen Recherche beider Internetauftritte werde ich pytest verwende.
+Anhand einer kurzen Recherche beider Internetauftritte werde ich pytest verwenden.
 Einerseits liefert pytest bei fehlgeschlagenen Tests eine ausführlichere Analysemeldung, adererseits wird pytest von Qt empfohlen.
 Mit pytest lassen sich aber nur Python Module testen.
-Für einen GUI Test muss das \verb|QtTest| Framework verwendet werden.
-Leider lässt sich zu diesem Paket keine umfangreiche Dokumentation, sodass von diesem Framework in dieser Arbeit abgesehen wird.\\
 
-\vspace{1cm}
-Sporadische Fehler können nicht vorhergesehen werden und müssen überprüft und abgefangen werden.
+Für einen GUI Test muss das \verb|QtTest| Framework verwendet werden.
+Leider lässt sich zu diesem Paket keine umfangreiche Dokumentation. 
+Ich habe versucht dieses Framework zusammen mit dem Qt Creator zu benutzen. 
+Entweder erhielt ich Fehlermdleungen, die ich nicht mit meinem Code in Verbindung bringen konnte 
+oder das Ausführen des Programms ignorierte die geschriebenen Tests.
+Dies bewegt mich zu der Empfehlung von diesem Framework ohne weitere Updates und Dokumentation seitens Qt abzusehen.
+
+Sporadische Fehler können nicht unbedingt vorhergesehen werden. 
+Sie rühren meistens aus einer unerwarteten Kombination von Eigaben die selten auftritt oder durch einen Fehler in einerm eingebundenen Dienst. 
+Eine gut dokumentierte API weist auf Fehlermöglichkeiten hin und gibt Hinweise zur Fehlerbehandlung.
 Die erwarteten Quellen sind Eingabefehler und Kommunikationsfehler.
 
 \subsection{Erkennung fehlerhafter Benutzereingaben}
 
-Werden im Programm falsche Daten eingegeben, soll dies, soweit wie möglich, überprüft und abgefangen werden.
+Werden im Programm falsche Daten eingegeben eingelesen, soll dies, soweit wie möglich, entdeckt und abgefangen werden.
 Die Tabelle \ref{tab:Benutzereingaben} listet alle erwarteten Benutzereingaben und mögliche Methoden die Benutzereingaben
-zu validieren. \\
+zu validieren.
 
 \input{Kapitel/Tabellen/BenutzereingabenFehler}
 
-\vspace{1cm}
 Wenn manuell Transportaufträge eingegeben werden, kann es zu Konflikten kommen.
 Z.B. Könnte im Abholort kein Becher oder keine Palette sein.
 Umgekehrt könnte am Abstellort eine Palette oder Becher stehen.

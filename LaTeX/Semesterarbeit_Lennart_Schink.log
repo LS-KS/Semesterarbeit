@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  9 NOV 2023 16:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  10 NOV 2023 14:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1166,7 +1166,7 @@ Writing index file Semesterarbeit_Lennart_Schink.idx
 LaTeX Font Info:    Trying to load font information for T1+Crlt-LF on input line 99.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/carlito/T1Crlt-LF.fd
 File: T1Crlt-LF.fd 2022/10/05 (autoinst) Font definitions for T1/Crlt-LF.
-) (./Semesterarbeit_Lennart_Schink.aux (./Kapitel/Abkuerzungsverzeichnis.aux) (./Kapitel/Einleitung.aux) (./Kapitel/Lagerzelle.aux) (./Kapitel/altSoftwareArchitektur.aux) (./Kapitel/KonzeptPythonApp.aux) (./Kapitel/Fehlerbehandlung.aux) (./Kapitel/KameraValidierung.aux) (./Kapitel/Zusammenfassung_Ausblick.aux) (./Kapitel/AnhangA.aux))
+) (./Semesterarbeit_Lennart_Schink.aux (./Kapitel/Abkuerzungsverzeichnis.aux) (./Kapitel/Einleitung.aux) (./Kapitel/Lagerzelle.aux) (./Kapitel/altSoftwareArchitektur.aux) (./Kapitel/Funktionsanalyse.aux) (./Kapitel/KonzeptPythonApp.aux) (./Kapitel/Fehlerbehandlung.aux) (./Kapitel/KameraValidierung.aux) (./Kapitel/Zusammenfassung_Ausblick.aux) (./Kapitel/AnhangA.aux))
 \openout1 = `Semesterarbeit_Lennart_Schink.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 99.
@@ -1642,12 +1642,12 @@ Overfull \hbox (33.1811pt too wide) in paragraph at lines 70--71
 [6
 
 ]
-<Bilder/LV_Startbildschirm.png, id=267, 1499.6025pt x 817.0525pt>
+<Bilder/LV_Startbildschirm.png, id=279, 1499.6025pt x 817.0525pt>
 File: Bilder/LV_Startbildschirm.png Graphic file (type png)
 <use Bilder/LV_Startbildschirm.png>
 Package pdftex.def Info: Bilder/LV_Startbildschirm.png  used on input line 108.
 (pdftex.def)             Requested size: 398.3386pt x 217.02904pt.
-<Bilder/LV_Klassendiagramm_Datenmodell.png, id=270, 799.98875pt x 1154.3125pt>
+<Bilder/LV_Klassendiagramm_Datenmodell.png, id=282, 799.98875pt x 1154.3125pt>
 File: Bilder/LV_Klassendiagramm_Datenmodell.png Graphic file (type png)
 <use Bilder/LV_Klassendiagramm_Datenmodell.png>
 Package pdftex.def Info: Bilder/LV_Klassendiagramm_Datenmodell.png  used on input line 135.
@@ -1655,7 +1655,7 @@ Package pdftex.def Info: Bilder/LV_Klassendiagramm_Datenmodell.png  used on inpu
  [7 <./Bilder/LV_Startbildschirm.png>] [8 <./Bilder/LV_Klassendiagramm_Datenmodell.png>] [9
 
 ]
-<Bilder/LV_Klassendiagramm_ABBController.png, id=287, 817.0525pt x 1165.35374pt>
+<Bilder/LV_Klassendiagramm_ABBController.png, id=299, 817.0525pt x 1165.35374pt>
 File: Bilder/LV_Klassendiagramm_ABBController.png Graphic file (type png)
 <use Bilder/LV_Klassendiagramm_ABBController.png>
 Package pdftex.def Info: Bilder/LV_Klassendiagramm_ABBController.png  used on input line 167.
@@ -1683,7 +1683,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 251--54
  []
 
 ) [13]
-<Bilder/LV_Klassendiagramm_Modbus.png, id=331, 811.03pt x 677.53125pt>
+<Bilder/LV_Klassendiagramm_Modbus.png, id=343, 811.03pt x 677.53125pt>
 File: Bilder/LV_Klassendiagramm_Modbus.png Graphic file (type png)
 <use Bilder/LV_Klassendiagramm_Modbus.png>
 Package pdftex.def Info: Bilder/LV_Klassendiagramm_Modbus.png  used on input line 295.
@@ -1716,12 +1716,12 @@ LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
 (Font)              using `T1/cmss/bx/n' instead on input line 387.
 
 [16] [17]
-<Bilder/C_Klassendiagramm.png, id=369, 805.0075pt x 653.44125pt>
+<Bilder/C_Klassendiagramm.png, id=381, 805.0075pt x 653.44125pt>
 File: Bilder/C_Klassendiagramm.png Graphic file (type png)
 <use Bilder/C_Klassendiagramm.png>
 Package pdftex.def Info: Bilder/C_Klassendiagramm.png  used on input line 421.
 (pdftex.def)             Requested size: 398.3386pt x 323.33975pt.
-<Bilder/Controller_Startbildschirm.png, id=370, 235.37938pt x 528.97626pt>
+<Bilder/Controller_Startbildschirm.png, id=382, 235.37938pt x 528.97626pt>
 File: Bilder/Controller_Startbildschirm.png Graphic file (type png)
 <use Bilder/Controller_Startbildschirm.png>
 Package pdftex.def Info: Bilder/Controller_Startbildschirm.png  used on input line 431.
@@ -1733,7 +1733,7 @@ LaTeX Warning: Float too large for page by 23.0pt on input line 433.
 [18
 
 ] [19 <./Bilder/C_Klassendiagramm.png>] [20 <./Bilder/Controller_Startbildschirm.png>] [21]
-<Bilder/RFID_Klassendiagramm.png, id=401, 814.04124pt x 940.51375pt>
+<Bilder/RFID_Klassendiagramm.png, id=413, 814.04124pt x 940.51375pt>
 File: Bilder/RFID_Klassendiagramm.png Graphic file (type png)
 <use Bilder/RFID_Klassendiagramm.png>
 Package pdftex.def Info: Bilder/RFID_Klassendiagramm.png  used on input line 514.
@@ -1743,7 +1743,7 @@ Overfull \hbox (2.75641pt too wide) in paragraph at lines 521--522
 []\T1/cmss/m/n/10.95 Diese im-ple-men-tiert die oben be-schrie-be-ne Lis-te wel-che Ob-jek-te der Klas-se [][]\T1/lmtt/m/n/10.95 RFIDProducer
  []
 
-<Bilder/RFIDServer_Bildschirm.png, id=404, 379.4175pt x 368.87813pt>
+<Bilder/RFIDServer_Bildschirm.png, id=416, 379.4175pt x 368.87813pt>
 File: Bilder/RFIDServer_Bildschirm.png Graphic file (type png)
 <use Bilder/RFIDServer_Bildschirm.png>
 Package pdftex.def Info: Bilder/RFIDServer_Bildschirm.png  used on input line 551.
@@ -1753,9 +1753,20 @@ Overfull \hbox (11.37988pt too wide) in paragraph at lines 551--553
  [][] 
  []
 
-[22
+) [22
 
-] [23 <./Bilder/RFID_Klassendiagramm.png>] [24 <./Bilder/RFIDServer_Bildschirm.png>] [25] [26]) [27] [28
+] [23 <./Bilder/RFID_Klassendiagramm.png>] [24 <./Bilder/RFIDServer_Bildschirm.png>]
+\openout2 = `Kapitel/Funktionsanalyse.aux'.
+
+ (./Kapitel/Funktionsanalyse.tex
+chapter 4.
+[25
+
+
+
+
+
+] [26]) [27] [28
 
 
 
@@ -1763,24 +1774,60 @@ Overfull \hbox (11.37988pt too wide) in paragraph at lines 551--553
 \openout2 = `Kapitel/KonzeptPythonApp.aux'.
 
  (./Kapitel/KonzeptPythonApp.tex
-chapter 4.
-
-Underfull \vbox (badness 1655) has occurred while \output is active []
-
- [29
+chapter 5.
+[29
 
 
 ]
-<Bilder/BeispielRefInt.png, id=448, 450.68375pt x 423.5825pt>
+<Bilder/BeispielRefInt.png, id=457, 450.68375pt x 423.5825pt>
 File: Bilder/BeispielRefInt.png Graphic file (type png)
 <use Bilder/BeispielRefInt.png>
-Package pdftex.def Info: Bilder/BeispielRefInt.png  used on input line 48.
+Package pdftex.def Info: Bilder/BeispielRefInt.png  used on input line 76.
 (pdftex.def)             Requested size: 398.3386pt x 374.4019pt.
- [30 <./Bilder/BeispielRefInt.png>]
-Underfull \vbox (badness 1769) has occurred while \output is active []
 
- [31] [32]
-Underfull \hbox (badness 4660) in paragraph at lines 137--137
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [30] [31 <./Bilder/BeispielRefInt.png>]
+Overfull \hbox (23.2348pt too wide) in paragraph at lines 101--103
+[]\T1/cmss/m/n/10.95 Aus dem Dia-gramm wird auch deut-lich, dass zwsi-chen den Ob-jek-ten der Klas-sen [][]\T1/lmtt/m/n/10.95 MobileRobot[]\T1/cmss/m/n/10.95 ,
+ []
+
+<Bilder/Objektdiagramm_PaletteCupStorage.png, id=475, 643.40375pt x 389.455pt>
+File: Bilder/Objektdiagramm_PaletteCupStorage.png Graphic file (type png)
+<use Bilder/Objektdiagramm_PaletteCupStorage.png>
+Package pdftex.def Info: Bilder/Objektdiagramm_PaletteCupStorage.png  used on input line 114.
+(pdftex.def)             Requested size: 398.3386pt x 241.12086pt.
+<Bilder/Klassendiagramm_Datenstruktur.png, id=476, 703.62875pt x 694.595pt>
+File: Bilder/Klassendiagramm_Datenstruktur.png Graphic file (type png)
+<use Bilder/Klassendiagramm_Datenstruktur.png>
+Package pdftex.def Info: Bilder/Klassendiagramm_Datenstruktur.png  used on input line 122.
+(pdftex.def)             Requested size: 398.3386pt x 393.22061pt.
+[32 <./Bilder/Objektdiagramm_PaletteCupStorage.png>] [33 <./Bilder/Klassendiagramm_Datenstruktur.png>]
+Overfull \hbox (13.60098pt too wide) in paragraph at lines 167--169
+\T1/cmss/m/n/10.95 Ser-vice und GUI zu im-ple-men-tie-ren. Ei-ne be-son-de-re Rol-le nimmt der [][]\T1/lmtt/m/n/10.95 InventoryController
+ []
+
+(./Kapitel/Tabellen/Services.tex
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./Kapitel/Tabellen/Controller.tex
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+)
+Underfull \vbox (badness 3646) has occurred while \output is active []
+
+ [34]
+Overfull \hbox (13.31622pt too wide) in paragraph at lines 207--212
+[]\T1/cmss/m/n/10.95 Die zwei-te Mög-lich-keit ist Qt-Quick [[]] zu nut-zen. Ne-ben der In-stanz ei-ner [][]\T1/lmtt/m/n/10.95 QGuiApplication
+ []
+
+[35]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [36] [37]
+Underfull \hbox (badness 4899) in paragraph at lines 317--317
 [][][]|\T1/Crlt-LF/m/n/10 Bei-spiel ei-ner ein-fa-chen App mit-tels Py-Si-de6. Zu-nächst wird ei-ne In-stanz der
  []
 
@@ -1795,67 +1842,67 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-) (./Listings/listviewExample.qml [33]
+) (./Listings/listviewExample.qml [38]
 Overfull \hbox (4.86551pt too wide) in paragraph at lines 62--63
 [][][][][][][][][][][][][][][][][][][][][] 
  []
 
-) [34]
-<Bilder/MVCS_Beispiel.png, id=574, 475.7775pt x 442.65375pt>
+) [39]
+<Bilder/MVCS_Beispiel.png, id=624, 475.7775pt x 442.65375pt>
 File: Bilder/MVCS_Beispiel.png Graphic file (type png)
 <use Bilder/MVCS_Beispiel.png>
-Package pdftex.def Info: Bilder/MVCS_Beispiel.png  used on input line 150.
+Package pdftex.def Info: Bilder/MVCS_Beispiel.png  used on input line 330.
 (pdftex.def)             Requested size: 398.3386pt x 370.62433pt.
-
-Underfull \vbox (badness 3439) has occurred while \output is active []
-
- [35 <./Bilder/MVCS_Beispiel.png>]
-<Bilder/Mockup_Startbildschirm.png, id=589, 1205.50375pt x 804.00375pt>
-File: Bilder/Mockup_Startbildschirm.png Graphic file (type png)
-<use Bilder/Mockup_Startbildschirm.png>
-Package pdftex.def Info: Bilder/Mockup_Startbildschirm.png  used on input line 220.
-(pdftex.def)             Requested size: 398.3386pt x 265.66556pt.
-<Bilder/Mockup_ManualProcessing.png, id=590, 403.5075pt x 532.99126pt>
-File: Bilder/Mockup_ManualProcessing.png Graphic file (type png)
-<use Bilder/Mockup_ManualProcessing.png>
-Package pdftex.def Info: Bilder/Mockup_ManualProcessing.png  used on input line 230.
-(pdftex.def)             Requested size: 150.77928pt x 199.1693pt.
-<Bilder/Mockup_CommissionList.png, id=591, 825.0825pt x 323.2075pt>
-File: Bilder/Mockup_CommissionList.png Graphic file (type png)
-<use Bilder/Mockup_CommissionList.png>
-Package pdftex.def Info: Bilder/Mockup_CommissionList.png  used on input line 238.
-(pdftex.def)             Requested size: 398.3386pt x 156.04034pt.
-
-Underfull \vbox (badness 2173) has occurred while \output is active []
-
- [36] [37 <./Bilder/Mockup_Startbildschirm.png> <./Bilder/Mockup_ManualProcessing.png>]
-<Bilder/Objektdiagramm_PaletteCupStorage.png, id=608, 643.40375pt x 389.455pt>
-File: Bilder/Objektdiagramm_PaletteCupStorage.png Graphic file (type png)
-<use Bilder/Objektdiagramm_PaletteCupStorage.png>
-Package pdftex.def Info: Bilder/Objektdiagramm_PaletteCupStorage.png  used on input line 276.
-(pdftex.def)             Requested size: 398.3386pt x 241.12086pt.
-<Bilder/Klassendiagramm_Datenstruktur.png, id=609, 703.62875pt x 694.595pt>
-File: Bilder/Klassendiagramm_Datenstruktur.png Graphic file (type png)
-<use Bilder/Klassendiagramm_Datenstruktur.png>
-Package pdftex.def Info: Bilder/Klassendiagramm_Datenstruktur.png  used on input line 284.
-(pdftex.def)             Requested size: 398.3386pt x 393.22061pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [38 <./Bilder/Mockup_CommissionList.png>] (./Kapitel/Tabellen/Services.tex
+ [40 <./Bilder/MVCS_Beispiel.png>]
+Overfull \hbox (6.58223pt too wide) in paragraph at lines 384--386
+\T1/cmss/m/n/10.95 sel-ten ge-braucht. Über die Tool-bar sind die Ein-stel-lun-gen über den QML-Datentyp [][]\T1/lmtt/m/n/10.95 QDialog
+ []
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+[41]
+<Bilder/Mockup_Startbildschirm.png, id=643, 1205.50375pt x 804.00375pt>
+File: Bilder/Mockup_Startbildschirm.png Graphic file (type png)
+<use Bilder/Mockup_Startbildschirm.png>
+Package pdftex.def Info: Bilder/Mockup_Startbildschirm.png  used on input line 415.
+(pdftex.def)             Requested size: 398.3386pt x 265.66556pt.
+<Bilder/Mockup_ManualProcessing.png, id=644, 403.5075pt x 532.99126pt>
+File: Bilder/Mockup_ManualProcessing.png Graphic file (type png)
+<use Bilder/Mockup_ManualProcessing.png>
+Package pdftex.def Info: Bilder/Mockup_ManualProcessing.png  used on input line 425.
+(pdftex.def)             Requested size: 150.77928pt x 199.1693pt.
+<Bilder/Mockup_CommissionList.png, id=645, 825.0825pt x 323.2075pt>
+File: Bilder/Mockup_CommissionList.png Graphic file (type png)
+<use Bilder/Mockup_CommissionList.png>
+Package pdftex.def Info: Bilder/Mockup_CommissionList.png  used on input line 433.
+(pdftex.def)             Requested size: 398.3386pt x 156.04034pt.
+ [42 <./Bilder/Mockup_Startbildschirm.png>] [43 <./Bilder/Mockup_ManualProcessing.png> <./Bilder/Mockup_CommissionList.png>]
+Overfull \hbox (1.58621pt too wide) in paragraph at lines 493--496
+\T1/cmss/m/n/10.95 Erweiterungen wer-den nach der In-stal-la-ti-on des Pa-kets in der Kon-fi-gu-ra-ti-ons-da-tei [][]\T1/lmtt/m/n/10.95 conf.py
+ []
 
-) (./Kapitel/Tabellen/Controller.tex
+[44]
+Overfull \hbox (9.33754pt too wide) in paragraph at lines 545--554
+\T1/cmss/m/n/10.95 Er-wei-te-rung view-co-de ge-nutzt. Un-ter-halb der Mo-dul-über-schrift im HTML-Dokumentwerden
+ []
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+[45] [46]) [47] [48
 
-) [39 <./Bilder/Objektdiagramm_PaletteCupStorage.png>] [40 <./Bilder/Klassendiagramm_Datenstruktur.png>] [41] [42] [43]) [44]
+
+
+]
 \openout2 = `Kapitel/Fehlerbehandlung.aux'.
 
  (./Kapitel/Fehlerbehandlung.tex
-chapter 5.
-(./Kapitel/Tabellen/BenutzereingabenFehler.tex
+chapter 6.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [49
+
+
+] (./Kapitel/Tabellen/BenutzereingabenFehler.tex
 Overfull \hbox (3.92052pt too wide) in paragraph at lines 18--18
 []|\T1/Crlt-LF/m/n/10.95 Wertebereich| 
  []
@@ -1875,24 +1922,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--18
 []|\T1/Crlt-LF/m/n/10.95 0 ...255
  []
 
-) [45
-
-
-
-
-
-]) [46]
+)) [50]
 \openout2 = `Kapitel/KameraValidierung.aux'.
 
  (./Kapitel/KameraValidierung.tex
-chapter 6.
-) [47
+chapter 7.
+) [51
 
 
 
 
 
-] [48
+] [52
 
 
 
@@ -1900,11 +1941,11 @@ chapter 6.
 \openout2 = `Kapitel/Zusammenfassung_Ausblick.aux'.
 
  (./Kapitel/Zusammenfassung_Ausblick.tex
-chapter 7.
-) [49
+chapter 8.
+) [53
 
 
-] [50
+] [54
 
 
 
@@ -1929,23 +1970,23 @@ Underfull \hbox (badness 1097) in paragraph at lines 54--55
 
 ] 
 enddocument/afterlastpage: lastpage setting LastPage.
-(./Semesterarbeit_Lennart_Schink.aux (./Kapitel/Abkuerzungsverzeichnis.aux) (./Kapitel/Einleitung.aux) (./Kapitel/Lagerzelle.aux) (./Kapitel/altSoftwareArchitektur.aux) (./Kapitel/KonzeptPythonApp.aux) (./Kapitel/Fehlerbehandlung.aux) (./Kapitel/KameraValidierung.aux) (./Kapitel/Zusammenfassung_Ausblick.aux) (./Kapitel/AnhangA.aux))
+(./Semesterarbeit_Lennart_Schink.aux (./Kapitel/Abkuerzungsverzeichnis.aux) (./Kapitel/Einleitung.aux) (./Kapitel/Lagerzelle.aux) (./Kapitel/altSoftwareArchitektur.aux) (./Kapitel/Funktionsanalyse.aux) (./Kapitel/KonzeptPythonApp.aux) (./Kapitel/Fehlerbehandlung.aux) (./Kapitel/KameraValidierung.aux) (./Kapitel/Zusammenfassung_Ausblick.aux) (./Kapitel/AnhangA.aux))
 Package rerunfilecheck Info: File `Semesterarbeit_Lennart_Schink.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 51944 strings out of 476025
- 1203969 string characters out of 5790017
- 1912944 words of memory out of 5000000
- 71061 multiletter control sequences out of 15000+600000
+ 51997 strings out of 476025
+ 1205355 string characters out of 5790017
+ 1913649 words of memory out of 5000000
+ 71091 multiletter control sequences out of 15000+600000
  608205 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,12n,106p,10683b,2689s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/google/carlito/Crlt-Bold.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/google/carlito/Crlt-Regular.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on Semesterarbeit_Lennart_Schink.pdf (65 pages, 1021104 bytes).
+Output written on Semesterarbeit_Lennart_Schink.pdf (69 pages, 1031791 bytes).
 PDF statistics:
- 1011 PDF objects out of 1200 (max. 8388607)
- 870 compressed objects within 9 object streams
- 309 named destinations out of 1000 (max. 500000)
- 439 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1069 PDF objects out of 1200 (max. 8388607)
+ 923 compressed objects within 10 object streams
+ 325 named destinations out of 1000 (max. 500000)
+ 487 words of extra memory for PDF output out of 10000 (max. 10000000)
 
