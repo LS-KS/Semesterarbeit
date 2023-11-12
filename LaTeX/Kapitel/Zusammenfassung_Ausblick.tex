@@ -1,8 +1,29 @@
 % !TeX spellcheck = de_DE
 \chapter{Zusammenfassung und Ausblick}
 
-Hier wird die Arbeit zusammengefasst und eun Ausblick auf offene
-Fragestellungen gebeben.
+In dieser Arbeit wurde ein breiter Themenbogen gespannt, der von der Analyse der Architektur und Funktion einer C$\#$ / .NET Softwareanwendung bis zur
+Konzeptionierung einer neuen Anwendung in Python mit Qt reicht.
+In der Auseinandersetzung der Programmiersprachen C$\#$ und Python wurden ihre Unterschiede diskutiert und aufgezeigt, dass eine Portierung 1:1 nicht möglich ist.
+Eher handelt es sich dabei um eine Neuentwicklung, die die Funktionen der alten Software übernimmt und um den neuen Kommunikationsstandard OPC UA erweitert.
+
+Mit Augenmerk auf das GUI, wurden wesentliche Informationen und ihre Visualisierung diskutiert und Entwürfe für die neue Anwendung vorgestellt. 
+Eine Analyse hat gezeigt, dass der Hauptbildschirm aufgeräumt werden kann, sodass der Hauptbildschirms den Lagerprozess und die Lager-Visualisierung
+fokussiert. 
+Diejenigen Informationen, die dabei nicht mehr angezeigt werden, können dabei in einem Dialog oder einem neuen Fenster angezeigt werden.
+Der Dienst zur manuellen Lagerbedienung wird, genau wie der RFID-Server, als Plugin ausgeführt.
+
+Aspekte der Implementierung wurden diskutiert und veranschaulicht, wie der Aufbau der neuen Anwendung unter Berücksichtigung des MVVC-Konzepts gelingen kann. 
+Es wurde detailliert auf die Datenmodellierung eingegangen und die Vorteile der Referenziellen Integrität diskutiert und an Beispielen gezeigt.
+
+Für die Zukunft wurde festgelegt, dass die Weiterentwicklung und Wartung der Anwendung bereits bei der Entwicklung der neuen Anwendung berücksichtigt werden soll. 
+Zu dem Zweck werden die einzelnen Controller- und Serviceklassen auf eine enge Kernfunktion beschränkt. 
+Die Verwendung der in Python eingebetteten Doc-Strings soll verwendet werden, um mit dem Paket Sphinx eine automatisierte Dokumentation zu erstellen.
+Es wurden zudem zwei andere Pakete vorgestellt und diskutiert, mit denen Python-Module getestet werden können, um schnell die Konsistenz des Datenmodells zu überprüfen.
+Diese beiden Aspekte sollen es anderen Personen erheblich erleichtern sich in die neue Anwendung einzuarbeiten, um sie zu warten oder zu erweitern.
+
+Der Schwerpunkt des Ausblicks liegt auf der Ideensammlung für kameragestützte Validierungsprozesse in der Lagerzelle.
+Es wurden zwei Usecases vorgestellt und Aspekte des Ablaufs diskutiert.
+Aus den Ideen wurden Anforderungen an die Kameras und die Implementierung der Software abgeleitet.
 
 %%% Local Variables:
 %%% mode: latex

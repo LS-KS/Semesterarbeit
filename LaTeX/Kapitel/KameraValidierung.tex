@@ -1,7 +1,81 @@
 \chapter{Ideensammlung zu kameragestützten Validierungsprozessen in der Lagerverwaltung}\label{Kap5}
 
-    \subsection {Konzepte}
+Die neue Softwareanwendung soll die Möglichkeit bieten, das Inventar der Lagerzelle automatisiert zu überprüfen. 
+Zu diesem Zweck sollen kameragestützzte Validierungsprozesse implementiert und untersucht werden. 
+Dieses Kapitel soll dafür ein Konzept entwickeln und offensichtliche Anforderungen an die Kamera ableiten.
 
-    \subsection {Abgeleitete Anforderungen an die Kamera}
+\subsection {Konzepte}
 
-    \subsection {Kameraauswahl}
+Die Lagerzelle beinhaltet ein Regal und einen Kommissionier-Tisch, der Paletten und Becher mit ggf. Produkten enthält.
+Produkte werden dabei durch Wasser, die mit farbigen Kugeln vermengt sind, simuliert.
+Ein Produkt wird von einem mobilen Roboter in einem Becher angeliefert. Anschließend wird es von dem Roboterarm in das Regal geräumt und verbleibt dort bis zu seiner Auslieferung.
+Die Softwareanwendung merkt sich den Inventarbestand und seine Position im Regal.
+Eine Manipulation des Inventars ist durch eine Person jederzeit möglich.
+Ebenso eine Fehleingabe. 
+
+Für eine kameragestützte Inventur gibt es somit zwei Usecases: 
+Zum einen könnte eine Inventur auf Anforderung eines Benutzers durchgeführt werden um einen Soll-Ist Abgleich des realen Inventars mit 
+dem gespeicherten Stand der Softwareanwendung vorzunehmen. 
+Zum Beispiel, weil nicht mehr sichergestellt werden kann, dass die Bestandsdaten korrekt sind.
+Zum anderen können die Produkte und Becher bei Anlieferung und Auslieferung automatisch verifiziert und Diskrepanzen dem Benutzer angezeigt werden.
+Wenn die kameragestützte Inventur mittels einer Kamera auf dem Greifer durchgeführt wird, kann die Lagerzelle in dieser Zeit keine Transportaufträge bearbeiten.
+Um einen Lagerort zu verifizieren, muss der Greifer vor die Palette fahren, kontrollieren, dass die Palette an Ort und Stelle ist, und den vorderen Becher prüfen. 
+Anschließend muss der Greifer die Palette aus dem Regal holen und auf den Kommissionier-Tisch stellen.
+Erst jetzt kann der Greifer den hinteren Becher prüfen und die Palette wieder in das Regal stellen.
+
+Wenn der Roboterarm aus einer schnellen Bewegung heraus für eine Aufnahme stoppt, ist zu erwarten, dass aufgrund von Schwingungen nicht direkt mit der Bildaufnahme begonnen werden.
+Eine Bildaufnahme an sich kann ebenfalls bis zu 5 Sekunden dauern. 
+Wenn man überschlägt, dass für die Anfahrt, Auslagern und Einlagern je 5 Sekunden benötigt werden (was eine eher optimistische Schätzung ist), dauert eine Inventur pro Lagerort 25 Sekunden.
+Bei 18 Paletten, ist die Lagerzelle somit für 7,5 Minuten blockiert.
+Soll dazu noch das Produkt bewertet werden, muss der Greifer, nach dem die Palette auf dem Kommissionier-Tisch abgestellt wurde, von oben in den Bescher schauen und die Farben der drei 
+Kugeln erkennen.
+Eine andere Möglichkeit ist, eine Übersichtskamera zu verwenden. 
+Diese ist an einem Ort in der Lagerzelle montiert, von dem aus alle Lagerorte, möglichst gut, überblickt werden können.
+So kann während die Lagerzelle in Betrieb ist, das Inventar überprüft werden.
+Bedingung dafür ist, dass die optischen Marker gut sichtbar und hoch genug aufgelöst sind.
+Selbst wenn nicht alle optischen Marker von der Übersichtskamera erkannt werden können, so können dennoch von den erkannten Markern Rückschlüsse auf die Gültigkeit des Inventars gezogen werden. 
+Oder aber die Daten, die mit der Übersichtskamera gewonnen werden, reduzieren die Zeit, die für die Inventur mit der Greifer-Kamera benötigt wird.
+
+
+\subsection {Abgeleitete Anforderungen an die Kamera}
+
+Für die Kameras, die für die kameragestützte Inventur verwendet werden, lassen sich aus dem Konzept Anforderungen ableiten. 
+Der Greifer ist hoch beweglich und bietet aufgrund seiner Kinematik wenig Platz für eine Kamera. 
+Die Kamera kann daher nur direkt auf dem Greifer befestigt werden. 
+Ist ein Becher im Greifer ergibt sich daraus eine sehr kurze Distanz zwischen dem Kamerasensor und dem optischen Marker (etwa 30mm, je nach Kamera).
+Die in \cite[Sebastian Hüblers Arbeit]{Hübler2019} verwendete $\mu$Eye Kamera konnte mit dem Abstand gut umgehen, wenngleich die optische Marker nicht mehr scharf sichtbar waren.
+Leider ist diese Kamera defekt und es bedarf daher einer Neuanschaffung. 
+
+An die Auflösung der Kamera auf dem Greifer gibt es keine besonderen Anforderungen, da die Marker erwartungsgemäß beinahe den gesamten Bildbereich einnehmen werden. 
+Soll das Produkt erkannt werden, muss die Kamera einen RGB-Sensor haben.
+Am Arm des Greifers ist bereits eine USB 2.0 Leitung verlegt, die benutzt werden soll. 
+
+Eine Übersichtskamera wird für die größtmögliche Übersicht in eine der oberen Raumecken der Lagerzelle montiert.
+Von dort aus, ist die Mitte des Regals etwa 3m entfernt. 
+Bei einem arUco Marker mit einer 6x6 Binärmatrix und einer Kantenlänge von ca. 30mm, ist ein Bit etwa 3x3mm groß.
+Da das Regal nicht den gesamten Bildbereich einnimmt, ist je nach Apertur der Kamera eine Auflösung von mehr als 20MP nötig. 
+Zu dieser Auffassung komme ich nach Rücksprache mit dem Kamerahersteller IDS. 
+
+Eine Kamera in der Raumecke muss sowohl eine Datenverbindung als auch eine Stromversorgung zur Verfügung gestellt bekommen.
+Hochauflösende Kameras sind in der Regel mit GigE verfügbar und können über PoE mit Spannung versorgt werden. 
+Eine Kamera, die beides erfüllt, spart die Verlegung einer weiteren Leitung. 
+
+
+\subsection{Anforderungen an die Softwareanwendung}
+
+Die Softwareschnittstelle der Kameras muss entweder OpenCV kompatibel sein oder eine Python-API bereitstellen.
+Da einzelne Bilder verarbeitet werden sollen, ist eine hohe Bildrate nicht notwendig.
+Zunächst wird mit der Übersichtkamera eine Bildaufnahme gemacht und daraus mit den Methoden der Bildverarbeitung alle optischen Marker erkannt - wo möglich.
+Ein Vergleich mit dem Datenmodell ergibt die Positionen, bei denen eine Erkennung nicht funktionierte.
+Für diese Positionen muss anschließend der Greifer die Inventurschritte übernehmen.
+Erreicht der Roboter einen Ort von dem aus ein Bild aufgenommen werden soll, so muss er an die Softwareanwendung ein Signal senden, welches
+der \verb|ABBController| verarbeitet und eine Bildaufnahme auslöst.
+Während der Implementierung ist zu untersuchen, ob die Signale des Roboters Informationen über die Position enthalten müssen, oder ob die Position des Greifers aus dem Algorithmus abgeleitet werden kann.
+Anschließend muss der Erkennungsalgorithmus ausgeführt werden.
+Diese Schritte werden wiederholt, bis alle Lagerorte überprüft wurden.  
+Sind die Inventurdaten vollständig, müssen die Daten mit den gespeicherten Daten verglichen werden.
+Aus den Bildern und den daraus erkannten Daten muss eine Übersichtsansicht erstellt und angezeigt werden. 
+Hier soll der Soll/Ist-Vergleich veranschaulicht werden. 
+Bei Diskrepanzen soll ein Benutzer die Möglichkeit haben die Daten vereinzelt zu korrigieren, die Übernahme zu bestätigen oder zu verwerfen.
+
+

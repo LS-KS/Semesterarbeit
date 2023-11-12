@@ -15,29 +15,30 @@ Weitere Fehler sind oft in der Logik des Programms zu finden. Diese zu identifiz
 Es ist jedoch möglich, nach dem Eingabe-Verarbeitung-Ausgabe Prinzip vorzugehen. 
 Dabei bewertet man engmaschig die Eingabe und die Ausgabe und vergleicht Soll mit Ist. 
 
-Eingaben können in einem Wertebereich möglich sein.
+Eingaben können Werte innerhalb eines Bereichs annehmen.
 Hier muss der Entwickler alle erwartbaren Sonderfälle abdecken.
 Für systematische Fehler können in der Softwareentwicklung Tests definiert werden, die das Programmverhalten 
 für ein Spektrum an Eingaben überprüfen.
 Die Ausgaben werden mit den erwarteten Ausgaben durch Assertions verglichen.
 In Python ist dies beispielsweise mit dem Paket \verb|pytest| ( siehe \cite{pytestHP}) oder \verb|unittest| ( siehe \cite{unittestHP}) möglich.
 Anhand einer kurzen Recherche beider Internetauftritte werde ich pytest verwenden.
-Einerseits liefert pytest bei fehlgeschlagenen Tests eine ausführlichere Analysemeldung, adererseits wird pytest von Qt empfohlen.
+Einerseits liefert pytest bei fehlgeschlagenen Tests eine ausführlichere Analysemeldung, andererseits wird pytest von Qt empfohlen.
 Mit pytest lassen sich aber nur Python Module testen.
 
-Für einen GUI Test muss das \verb|QtTest| Framework verwendet werden.
+Für einen GUI-Test muss das \verb|QtTest| Framework verwendet werden.
 Leider lässt sich zu diesem Paket keine umfangreiche Dokumentation. 
 Ich habe versucht dieses Framework zusammen mit dem Qt Creator zu benutzen. 
-Entweder erhielt ich Fehlermdleungen, die ich nicht mit meinem Code in Verbindung bringen konnte 
+Entweder erhielt ich Fehlermeldungen, die ich nicht mit meinem Code in Verbindung bringen konnte 
 oder das Ausführen des Programms ignorierte die geschriebenen Tests.
 Dies bewegt mich zu der Empfehlung von diesem Framework ohne weitere Updates und Dokumentation seitens Qt abzusehen.
 
 Sporadische Fehler können nicht unbedingt vorhergesehen werden. 
-Sie rühren meistens aus einer unerwarteten Kombination von Eigaben die selten auftritt oder durch einen Fehler in einerm eingebundenen Dienst. 
+Sie rühren meistens aus einer unerwarteten Kombination von Eingaben die selten auftritt oder durch einen Fehler in einem eingebundenen Dienst. 
 Eine gut dokumentierte API weist auf Fehlermöglichkeiten hin und gibt Hinweise zur Fehlerbehandlung.
 Die erwarteten Quellen sind Eingabefehler und Kommunikationsfehler.
 
-\subsection{Erkennung fehlerhafter Benutzereingaben}
+
+\subsubsection{Erkennung fehlerhafter Benutzereingaben}
 
 Werden im Programm falsche Daten eingegeben eingelesen, soll dies, soweit wie möglich, entdeckt und abgefangen werden.
 Die Tabelle \ref{tab:Benutzereingaben} listet alle erwarteten Benutzereingaben und mögliche Methoden die Benutzereingaben
@@ -46,10 +47,27 @@ zu validieren.
 \input{Kapitel/Tabellen/BenutzereingabenFehler}
 
 Wenn manuell Transportaufträge eingegeben werden, kann es zu Konflikten kommen.
-Z.B. Könnte im Abholort kein Becher oder keine Palette sein.
+Z.B. könnte im Abholort kein Becher oder keine Palette sein.
 Umgekehrt könnte am Abstellort eine Palette oder Becher stehen.
+
 Für diese Problematiken können :
 \begin{itemize}
     \item Inventardaten zur Überprüfung herangezogen werden
     \item Kameragestützte Validierungsprozesse in Kapitel \ref{Kap5} Entworfen werden.
 \end{itemize}
+
+\subsection{Fehlerbehandlung}
+
+Fehler müssen behoben werden, wenn erwartet wird, dass sie das Programm auf negative Weise beeinflussen.
+Für das Datenmodell gilt das Prinzip, dass jede Änderung getestet werden muss. 
+Der Test muss dafür für alle erwartbaren Gegebenheiten erweitert werden. 
+
+Dies gilt auch für den invController, da dieser das Datenmodell manipuliert.
+
+Für Controller und Services reicht es aus, die Funktionen durch Ausprobieren zu testen. 
+Der Funktionsumfang eines Controllers oder Services ist meistens geringer als der eines Datenmodells.
+Systematische Fehler können dadurch gut abgefangen und korrigiert werden. 
+Außerdem wird so klar, welche Fälle in Exceptions abgefangen und behandelt werden müssen. 
+
+Sporadische Fehler treten in Controllern und Services eher selten auf und können im Fall ihres Auftretens analysiert und behoben werden. 
+

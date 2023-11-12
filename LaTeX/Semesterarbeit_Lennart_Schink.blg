@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2023)
+This is BibTeX, Version 0.99d (TeX Live 2022)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Semesterarbeit_Lennart_Schink.aux
 A level-1 auxiliary file: Kapitel/Abkuerzungsverzeichnis.aux
@@ -10,7 +10,6 @@ A level-1 auxiliary file: Kapitel/KonzeptPythonApp.aux
 A level-1 auxiliary file: Kapitel/Fehlerbehandlung.aux
 A level-1 auxiliary file: Kapitel/KameraValidierung.aux
 A level-1 auxiliary file: Kapitel/Zusammenfassung_Ausblick.aux
-A level-1 auxiliary file: Kapitel/AnhangA.aux
 The style file: Literatur/IEEEtranGER.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -25,7 +24,7 @@ Database file #1: Literatur/Semesterarbeit.bib
 Done.
 You've used 13 entries,
             4022 wiz_defined-function locations,
-            884 strings with 9256 characters,
+            883 strings with 9237 characters,
 and the built_in function-call counts, 4137 in all, are:
 = -- 299
 > -- 19
